@@ -17,5 +17,4 @@ public class SearchInsertPosition {
         }
         return i;
     }
-
 }
