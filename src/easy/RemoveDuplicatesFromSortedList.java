@@ -8,9 +8,7 @@ public class RemoveDuplicatesFromSortedList {
     public static void main(String[] args) {
         RemoveDuplicatesFromSortedList obj = new RemoveDuplicatesFromSortedList();
         obj.addNode(1);
-        obj.addNode(1);
         obj.addNode(2);
-        obj.addNode(3);
         obj.addNode(3);
 
         //obj.printList();
@@ -24,10 +22,24 @@ public class RemoveDuplicatesFromSortedList {
         obj2.addNode(5);
         obj2.addNode(8);
 
-        obj2.printList(obj2.mergeTwoLists(obj.head, obj2.head));
+        //obj2.printList(obj2.mergeTwoLists(obj.head, obj2.head));
+
+        obj.printList(obj.reverseList(obj.head));
 
     }
 
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode temp = head;
+        while (temp != null) {
+            ListNode nextNode = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = nextNode;
+        }
+        head = prev;
+        return head;
+    }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if(l1 == null)
@@ -74,7 +86,6 @@ public class RemoveDuplicatesFromSortedList {
         return newHead;
     }
 
-
     public ListNode deleteDuplicates(ListNode head) {
         if(head == null)
             return head;
@@ -114,6 +125,7 @@ public class RemoveDuplicatesFromSortedList {
             System.out.println();
         }
     }
+
     private void printList(ListNode temp) {
         while (temp != null){
             System.out.print(temp.val+", ");
