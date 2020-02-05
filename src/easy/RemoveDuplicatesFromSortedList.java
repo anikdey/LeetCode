@@ -1,24 +1,78 @@
 package easy;
 
-import java.util.List;
-
 public class RemoveDuplicatesFromSortedList {
+
+    private ListNode head;
+    private ListNode tail;
 
     public static void main(String[] args) {
         RemoveDuplicatesFromSortedList obj = new RemoveDuplicatesFromSortedList();
-
         obj.addNode(1);
         obj.addNode(1);
         obj.addNode(2);
-//        obj.addNode(3);
-//        obj.addNode(3);
+        obj.addNode(3);
+        obj.addNode(3);
 
-        obj.printList();
-        obj.deleteDuplicates(obj.head);
+        //obj.printList();
+        //obj.deleteDuplicates(obj.head);
+        //obj.printList();
 
-        obj.printList();
+        RemoveDuplicatesFromSortedList obj2 = new RemoveDuplicatesFromSortedList();
+        obj2.addNode(2);
+        obj2.addNode(3);
+        obj2.addNode(4);
+        obj2.addNode(5);
+        obj2.addNode(8);
+
+        obj2.printList(obj2.mergeTwoLists(obj.head, obj2.head));
+
     }
 
+
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if(l1 == null)
+            return l2;
+
+        if(l2 == null)
+            return l1;
+
+        ListNode newHead = null;
+        ListNode current;
+
+        if(l1.val > l2.val) {
+            newHead = current = l2;
+            l2 = l2.next;
+            if(l2 == null){
+                newHead.next = l1;
+            }
+        }else {
+            newHead = current = l1;
+            l1 = l1.next;
+            if(l1 == null) {
+                newHead.next = l2;
+            }
+        }
+
+
+        while (l1 != null && l2 != null) {
+            if(l1.val > l2.val) {
+                current.next = l2;
+                current = l2;
+                l2 = l2.next;
+                if(l2 == null){
+                    current.next = l1;
+                }
+            } else {
+                current.next = l1;
+                current = l1;
+                l1 = l1.next;
+                if(l1 == null) {
+                    current.next = l2;
+                }
+            }
+        }
+        return newHead;
+    }
 
 
     public ListNode deleteDuplicates(ListNode head) {
@@ -38,9 +92,6 @@ public class RemoveDuplicatesFromSortedList {
 
         return head;
     }
-
-    private ListNode head;
-    private ListNode tail;
 
     private void addNode(int data) {
         ListNode node = new ListNode(data);
@@ -63,7 +114,13 @@ public class RemoveDuplicatesFromSortedList {
             System.out.println();
         }
     }
-
+    private void printList(ListNode temp) {
+        while (temp != null){
+            System.out.print(temp.val+", ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
 
     public class ListNode {
         int val;

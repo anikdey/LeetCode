@@ -15,7 +15,7 @@ public class MergeTwoSortedLists {
             return l1;
 
         ListNode newHead = null;
-        ListNode current = newHead;
+        ListNode current;
 
         if(l1.val > l2.val) {
             newHead = current = l2;
@@ -27,21 +27,22 @@ public class MergeTwoSortedLists {
             newHead = current = l1;
             l1 = l1.next;
             if(l1 == null) {
-                newHead = l2;
+                newHead.next = l2;
             }
         }
 
 
         while (l1 != null && l2 != null) {
-
             if(l1.val > l2.val) {
                 current.next = l2;
+                current = l2;
                 l2 = l2.next;
                 if(l2 == null){
                     current.next = l1;
                 }
             } else {
                 current.next = l1;
+                current = l1;
                 l1 = l1.next;
                 if(l1 == null) {
                     current.next = l2;
