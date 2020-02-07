@@ -42,8 +42,6 @@ public class TwoSum {
                 for(List<Integer> list: mainList){
 
                 }
-
-
                 List<Integer> list = new ArrayList<>();
                 list.add(map.get(requiredSum));
                 list.add(nums[i]);
