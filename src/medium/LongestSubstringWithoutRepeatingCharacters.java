@@ -8,6 +8,9 @@ public class LongestSubstringWithoutRepeatingCharacters {
     public static void main(String[] args) {
         System.out.println(lengthOfLongestSubstring("abcabcbb"));
         System.out.println(lengthOfLongestSubstring("sdfabdcsfab"));
+        System.out.println(lengthOfLongestSubstring("fgabcabcbb"));
+        System.out.println(lengthOfLongestSubstring("sdfabdcsfab"));
+        System.out.println(lengthOfLongestSubstring("sdfabdcsfag"));
         System.out.println(lengthOfLongestSubstring("dvdf"));
     }
 
@@ -27,7 +30,6 @@ public class LongestSubstringWithoutRepeatingCharacters {
                     lastPosition = newPosition;
                 }
             }
-
             int windowLength = i - lastPosition + 1;
             if(max<windowLength) {
                 max = windowLength;
