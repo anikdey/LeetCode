@@ -16,16 +16,52 @@ public class RemoveDuplicatesFromSortedList {
         //obj.printList();
 
         RemoveDuplicatesFromSortedList obj2 = new RemoveDuplicatesFromSortedList();
+        obj2.addNode(4);
+        obj2.addNode(4);
         obj2.addNode(2);
         obj2.addNode(3);
         obj2.addNode(4);
         obj2.addNode(5);
+        obj2.addNode(4);
         obj2.addNode(8);
+        obj2.addNode(4);
+        obj2.addNode(4);
+        obj2.addNode(4);
+        obj2.addNode(4);
+        obj2.addNode(4);
+        obj2.addNode(4);
+
+        obj2.printList();
+
+        ListNode h = obj2.removeElements(obj2.head, 4);
+
+        obj2.printList(h);
 
         //obj2.printList(obj2.mergeTwoLists(obj.head, obj2.head));
 
-        obj.printList(obj.reverseList(obj.head));
+        //obj.printList(obj.reverseList(obj.head));
 
+    }
+
+    public ListNode removeElements(ListNode head, int val) {
+        if(head == null)
+            return null;
+        ListNode temp = head;
+        ListNode prevNode = head;
+        while (temp != null) {
+            if(temp.val == val){
+                if(temp == head) {
+                    head = temp.next;
+                    prevNode = head;
+                }else {
+                    prevNode.next = temp.next;
+                }
+            }else {
+                prevNode = temp;
+            }
+            temp = temp.next;
+        }
+        return head;
     }
 
     public ListNode reverseList(ListNode head) {
