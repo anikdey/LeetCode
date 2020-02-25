@@ -19,7 +19,6 @@ public class GuessNumberHigherOrLower {
     public static int guessNumber(int n) {
         int lowerBound = 1;
         int upperBound = n;
-        int requiredNumber = 0;
         while (lowerBound<=upperBound){
             //int mid = (lowerBound + upperBound) / 2;
             int mid = lowerBound + (upperBound-lowerBound) / 2;
@@ -29,11 +28,10 @@ public class GuessNumberHigherOrLower {
             }else if(guess == 1){
                 lowerBound = mid+1;
             }else if(guess == 0) {
-                requiredNumber = mid;
-                return requiredNumber;
+                return mid;
             }
         }
-        return requiredNumber;
+        return -1;
     }
 
 }
